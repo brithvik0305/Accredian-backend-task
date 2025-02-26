@@ -1,0 +1,19 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Referral {
+  id        Int    @id @default(autoincrement())
+  FriendName      String @default("Unknown")
+  FriendMail     String @default("Unknown")
+  FriendNumber String @default("Unknown")
+  ReferredByName String @default("Unknown")
+  ReferredByMail String @default("Unknown")
+  ReferredByNumber String @default("Unknown")
+  createdAt DateTime @default(now())
+}
