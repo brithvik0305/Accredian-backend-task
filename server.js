@@ -23,8 +23,8 @@ app.post('/referral', async (req, res) => {
             data: { FriendName, FriendMail, FriendNumber, ReferredByName, ReferredByMail, ReferredByNumber },
         });
 
-        // Send email asynchronously
-        sendMail(FriendName, ReferredByName, FriendMail);
+        // // Send email asynchronously
+        // sendMail(FriendName, ReferredByName, FriendMail);
 
         res.status(201).json(referral);
     } catch (error) {
