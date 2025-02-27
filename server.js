@@ -22,7 +22,7 @@ app.post('/referral', async (req, res) => {
         console.log(prisma);
         console.log(prisma.referral_db);  // Check if it's undefined
 
-        const referral = await prisma.referraldb.create({
+        const referral = await prisma.referral_db.create({
             data: { FriendName, FriendMail, FriendNumber, ReferredByName, ReferredByMail, ReferredByNumber },
         });
 
