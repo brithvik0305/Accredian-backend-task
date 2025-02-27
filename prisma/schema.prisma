@@ -7,7 +7,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Referral_db {
+model Referraldb {
   id        Int    @id @default(autoincrement())
   FriendName      String @default("Unknown")
   FriendMail     String @default("Unknown")
