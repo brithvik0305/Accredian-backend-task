@@ -10,6 +10,18 @@ const prisma = new PrismaClient();
 app.use(cors());
 app.use(express.json());
 
+async function checkDBConnection() {
+    try {
+        await prisma.$connect();
+        console.log("Database connected successfully in production!");
+    } catch (error) {
+        console.error("Database connection failed:", error);
+        process.exit(1); // Exit the process if DB is not connected
+    }
+}
+
+checkDBConnection();
+
 // Referral API: Submit a referral
 app.post('/referral', async (req, res) => {
     const { FriendName, FriendMail, FriendNumber, ReferredByName, ReferredByMail, ReferredByNumber } = req.body;
@@ -19,8 +31,7 @@ app.post('/referral', async (req, res) => {
     }
 
     try {
-        console.log(prisma);
-        console.log(prisma.referral);  // Check if it's undefined
+       // Check if it's undefined
 
         const referral = await prisma.referral.create({
             data: { FriendName, FriendMail, FriendNumber, ReferredByName, ReferredByMail, ReferredByNumber },
